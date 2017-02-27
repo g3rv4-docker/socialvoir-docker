@@ -1,6 +1,6 @@
 FROM alpine:3.5
 MAINTAINER Gervasio Marchand <gmc@gmc.uy>
-ENV build_date 2017-02-26 15:32
+ENV build_date 2017-02-27 7:52
 
 RUN apk add --update python python-dev py2-pip build-base git supervisor redis bash && \
     pip install virtualenv && \
