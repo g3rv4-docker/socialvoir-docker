@@ -1,6 +1,6 @@
 FROM alpine:3.5
 MAINTAINER Gervasio Marchand <gmc@gmc.uy>
-ENV build_date 2017-02-27 7:52
+ENV build_date 2017-02-28 18:29
 
 RUN apk add --update python python-dev py2-pip build-base git supervisor redis bash && \
     pip install virtualenv && \
@@ -11,8 +11,9 @@ RUN git clone https://github.com/g3rv4/socialvoir.git /var/socialvoir && \
     /var/socialvoir/env/bin/pip install --no-cache-dir -r /var/socialvoir/requirements.txt
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY redis.conf /etc/redis.conf
 
-VOLUME ["/var/config"]
+VOLUME ["/var/db"]
 
 WORKDIR /var/socialvoir
 EXPOSE 8000
